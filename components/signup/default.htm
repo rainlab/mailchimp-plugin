@@ -1,0 +1,16 @@
+
+<div id="{{ __SELF__.id }}container">
+    <form 
+        data-request="{{ __SELF__.alias }}::onSignup"
+        data-request-update="'{{ __SELF__.alias }}::result': '#{{ __SELF__.id }}container'">
+
+        <div class="input-group">
+            <input name="email" type="text" class="form-control" placeholder="john.smith@example.com"/>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Subscribe</button>
+            </span>
+        </div>
+        <span class="help-block">We'll never spam or give this address away.</span>
+
+    </form>
+</div>
