@@ -1,6 +1,8 @@
 <?php namespace Plugins\RainLab\MailChimp\Components;
 
+use Validator;
 use Modules\Cms\Classes\ComponentBase;
+use October\Rain\Support\ValidationException;
 
 class Signup extends ComponentBase
 {
@@ -32,20 +34,29 @@ class Signup extends ComponentBase
 
     public function onSignup()
     {
-        $email = post('email');
+        /*
+         * Validate input
+         */
+        $data = post();
 
-        // @todo Use validation class
-        if (!$email) throw new \Exception('No Email address provided');
-        if(!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*$/i", $email))
-            throw new \Exception('Email address is invalid');
+        $rules = [
+            'email' => 'required|email|min:2|max:64',
+        ];
 
+        $validation = Validator::make($data, $rules);
+        if ($validation->fails())
+            throw new ValidationException($validation);
+
+        /*
+         * Sign up to Mailchimp via the API
+         */
         require_once(PATH_BASE . '/plugins/rainlab/mailchimp/vendor/MCAPI.class.php');
 
         $api = new \MCAPI($this->property('api-key'));
 
         $this->page['error'] = null;
 
-        if ($api->listSubscribe($this->property('list-id'), $email, '') !== true)
+        if ($api->listSubscribe($this->property('list-id'), post('email'), '') !== true)
             $this->page['error'] = $api->errorMessage;
     }
 
