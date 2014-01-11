@@ -19,14 +19,14 @@ class Signup extends ComponentBase
     {
         return [
             'api-key' => [
-                'description' => 'Get an API Key from http://admin.mailchimp.com/account/api/',
                 'title' => 'MailChimp API Key',
+                'description' => 'Get an API Key from http://admin.mailchimp.com/account/api/',
                 'type'=>'string'
             ],
 
             'list-id' => [
-                'description' => 'In MailChimp account, select List > Tools and look for a List ID.',
                 'title' => 'MailChimp List ID',
+                'description' => 'In MailChimp account, select List > Tools and look for a List ID.',
                 'type' => 'string'
             ]
         ];
