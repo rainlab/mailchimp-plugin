@@ -1,10 +1,10 @@
-<?php namespace Plugins\RainLab\MailChimp;
+<?php namespace RainLab\MailChimp;
 
 /**
  * The plugin.php file (called the plugin initialization script) defines the plugin information class.
  */
 
-use Modules\System\Classes\PluginBase;
+use System\Classes\PluginBase;
 
 class Plugin extends PluginBase
 {
@@ -22,7 +22,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            '\Plugins\RainLab\MailChimp\Components\Signup' => 'mailSignup'
+            '\RainLab\MailChimp\Components\Signup' => 'mailSignup'
         ];
     }
 

@@ -1,8 +1,8 @@
 
 <div id="{{ __SELF__.id }}container">
     <form 
-        data-request="{{ __SELF__.alias }}::onSignup"
-        data-request-update="'{{ __SELF__.alias }}::result': '#{{ __SELF__.id }}container'">
+        data-request="{{ __SELF__ }}::onSignup"
+        data-request-update="'{{ __SELF__ }}::result': '#{{ __SELF__.id }}container'">
 
         <div class="input-group">
             <input name="email" type="text" class="form-control" placeholder="john.smith@example.com"/>
