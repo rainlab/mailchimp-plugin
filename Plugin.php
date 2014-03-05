@@ -26,4 +26,17 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerSettings()
+    {
+        return [
+            'mailchimpConfig' => [
+                'label' => 'MailChimp',
+                'icon' => 'icon-envelope',
+                'description' => 'Configure MailChimp API access.',
+                'class' => 'RainLab\MailChimp\Models\Settings',
+                'order' => 210
+            ]
+        ];
+    }
+
 }

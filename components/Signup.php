@@ -3,6 +3,8 @@
 use Validator;
 use Cms\Classes\ComponentBase;
 use October\Rain\Support\ValidationException;
+use RainLab\MailChimp\Models\Settings;
+use System\Classes\ApplicationException;
 
 class Signup extends ComponentBase
 {
@@ -18,12 +20,6 @@ class Signup extends ComponentBase
     public function defineProperties()
     {
         return [
-            'api-key' => [
-                'title' => 'MailChimp API Key',
-                'description' => 'Get an API Key from http://admin.mailchimp.com/account/api/',
-                'type'=>'string'
-            ],
-
             'list-id' => [
                 'title' => 'MailChimp List ID',
                 'description' => 'In MailChimp account, select List > Tools and look for a List ID.',
@@ -34,6 +30,10 @@ class Signup extends ComponentBase
 
     public function onSignup()
     {
+        $settings = Settings::instance();
+        if (!$settings->api_key)
+            throw new ApplicationException('MailChimp API key is not configured.');
+
         /*
          * Validate input
          */
@@ -52,7 +52,7 @@ class Signup extends ComponentBase
          */
         require_once(PATH_BASE . '/plugins/rainlab/mailchimp/vendor/MCAPI.class.php');
 
-        $api = new \MCAPI($this->property('api-key'));
+        $api = new \MCAPI($settings->api_key);
 
         $this->page['error'] = null;
 
