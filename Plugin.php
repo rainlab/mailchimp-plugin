@@ -29,7 +29,7 @@ class Plugin extends PluginBase
     public function registerSettings()
     {
         return [
-            'mailchimpConfig' => [
+            'settings' => [
                 'label' => 'MailChimp',
                 'icon' => 'icon-envelope',
                 'description' => 'Configure MailChimp API access.',
