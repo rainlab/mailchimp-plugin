@@ -20,7 +20,7 @@ class Signup extends ComponentBase
     public function defineProperties()
     {
         return [
-            'list-id' => [
+            'list' => [
                 'title' => 'MailChimp List ID',
                 'description' => 'In MailChimp account, select List > Tools and look for a List ID.',
                 'type' => 'string'
@@ -56,7 +56,7 @@ class Signup extends ComponentBase
 
         $this->page['error'] = null;
 
-        if ($api->listSubscribe($this->property('list-id'), post('email'), '') !== true)
+        if ($api->listSubscribe($this->property('list'), post('email'), '') !== true)
             $this->page['error'] = $api->errorMessage;
     }
 
