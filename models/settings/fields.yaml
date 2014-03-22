@@ -2,4 +2,4 @@ fields:
   api_key:
     label: MailChimp API key
     span: left
-    comment-above: Get an API Key from http://admin.mailchimp.com/account/api/
+    commentAbove: Get an API Key from http://admin.mailchimp.com/account/api/
