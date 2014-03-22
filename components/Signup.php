@@ -12,7 +12,7 @@ class Signup extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Signup Form',
+            'name'        => 'Signup Form',
             'description' => 'Sign up a new person to a mailing list.'
         ];
     }
@@ -21,9 +21,9 @@ class Signup extends ComponentBase
     {
         return [
             'list' => [
-                'title' => 'MailChimp List ID',
+                'title'       => 'MailChimp List ID',
                 'description' => 'In MailChimp account, select List > Tools and look for a List ID.',
-                'type' => 'string'
+                'type'        => 'string'
             ]
         ];
     }

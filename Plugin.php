@@ -12,10 +12,10 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'MailChimp',
+            'name'        => 'MailChimp',
             'description' => 'Provides MailChimp integration services.',
-            'author' => 'Alexey Bobkov, Samuel Georges',
-            'icon' => 'icon-envelope'
+            'author'      => 'Alexey Bobkov, Samuel Georges',
+            'icon'        => 'icon-envelope'
         ];
     }
 
@@ -30,11 +30,11 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label' => 'MailChimp',
-                'icon' => 'icon-envelope',
+                'label'       => 'MailChimp',
+                'icon'        => 'icon-envelope',
                 'description' => 'Configure MailChimp API access.',
-                'class' => 'RainLab\MailChimp\Models\Settings',
-                'order' => 210
+                'class'       => 'RainLab\MailChimp\Models\Settings',
+                'order'       => 210
             ]
         ];
     }
