@@ -34,7 +34,7 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-envelope',
                 'description' => 'Configure MailChimp API access.',
                 'class'       => 'RainLab\MailChimp\Models\Settings',
-                'order'       => 210
+                'order'       => 600
             ]
         ];
     }
