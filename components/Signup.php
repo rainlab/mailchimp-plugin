@@ -2,9 +2,9 @@
 
 use Validator;
 use Cms\Classes\ComponentBase;
-use October\Rain\Support\ValidationException;
+use ValidationException;
 use RainLab\MailChimp\Models\Settings;
-use System\Classes\ApplicationException;
+use ApplicationException;
 
 class Signup extends ComponentBase
 {
@@ -50,7 +50,7 @@ class Signup extends ComponentBase
         /*
          * Sign up to Mailchimp via the API
          */
-        require_once(PATH_BASE . '/plugins/rainlab/mailchimp/vendor/MCAPI.class.php');
+        require_once(plugins_path() . '/rainlab/mailchimp/vendor/MCAPI.class.php');
 
         $api = new \MCAPI($settings->api_key);
 
