@@ -1,10 +1,10 @@
 <?php namespace RainLab\MailChimp\Components;
 
 use Validator;
-use Cms\Classes\ComponentBase;
 use ValidationException;
-use RainLab\MailChimp\Models\Settings;
 use ApplicationException;
+use Cms\Classes\ComponentBase;
+use RainLab\MailChimp\Models\Settings;
 
 class Signup extends ComponentBase
 {

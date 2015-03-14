@@ -22,7 +22,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            '\RainLab\MailChimp\Components\Signup' => 'mailSignup'
+            'RainLab\MailChimp\Components\Signup' => 'mailSignup'
         ];
     }
 
