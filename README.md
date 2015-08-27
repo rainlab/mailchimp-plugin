@@ -30,4 +30,9 @@ If the default partial is not suitable for your website, replace the component t
 
 The example uses the standard partial mailSignup::result for displaying the subscription confirmation message. If you don't like the standard message you can create your own partial in your theme and specify its name in the `data-request-update` attribute. The default partial is located in `plugins/rainlab/mailchimp/components/signup/result.htm`.
 
+More fields can be included in the subscription request:
+    
+    <input type="text" name="merge[fname]" placeholder="First Name" />
+    <input type="text" name="merge[lname]" placeholder="Last Name" />
+
 That's it!

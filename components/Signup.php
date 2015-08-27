@@ -56,7 +56,12 @@ class Signup extends ComponentBase
 
         $this->page['error'] = null;
 
-        if ($api->listSubscribe($this->property('list'), post('email'), '') !== true)
+        $mergeVars = '';
+        if (isset($data['merge']) && is_array($data['merge']) && count($data['merge'])) {
+            $mergeVars = $data['merge'];
+        }
+
+        if ($api->listSubscribe($this->property('list'), post('email'), $mergeVars) !== true)
             $this->page['error'] = $api->errorMessage;
     }
 
