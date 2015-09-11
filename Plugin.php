@@ -1,21 +1,17 @@
 <?php namespace RainLab\MailChimp;
 
-/**
- * The plugin.php file (called the plugin initialization script) defines the plugin information class.
- */
-
 use System\Classes\PluginBase;
 
 class Plugin extends PluginBase
 {
-
     public function pluginDetails()
     {
         return [
             'name'        => 'MailChimp',
             'description' => 'Provides MailChimp integration services.',
             'author'      => 'Alexey Bobkov, Samuel Georges',
-            'icon'        => 'icon-envelope'
+            'icon'        => 'icon-envelope',
+            'homepage'    => 'https://github.com/rainlab/mailchimp-plugin'
         ];
     }
 
@@ -38,5 +34,4 @@ class Plugin extends PluginBase
             ]
         ];
     }
-
 }
