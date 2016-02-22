@@ -8,7 +8,6 @@ use RainLab\MailChimp\Models\Settings;
 
 class Signup extends ComponentBase
 {
-
     public function componentDetails()
     {
         return [
@@ -31,8 +30,9 @@ class Signup extends ComponentBase
     public function onSignup()
     {
         $settings = Settings::instance();
-        if (!$settings->api_key)
+        if (!$settings->api_key) {
             throw new ApplicationException('MailChimp API key is not configured.');
+        }
 
         /*
          * Validate input
@@ -44,8 +44,9 @@ class Signup extends ComponentBase
         ];
 
         $validation = Validator::make($data, $rules);
-        if ($validation->fails())
+        if ($validation->fails()) {
             throw new ValidationException($validation);
+        }
 
         /*
          * Sign up to Mailchimp via the API
@@ -61,8 +62,8 @@ class Signup extends ComponentBase
             $mergeVars = $data['merge'];
         }
 
-        if ($api->listSubscribe($this->property('list'), post('email'), $mergeVars) !== true)
+        if ($api->listSubscribe($this->property('list'), post('email'), $mergeVars) !== true) {
             $this->page['error'] = $api->errorMessage;
+        }
     }
-
 }
