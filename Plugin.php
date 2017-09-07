@@ -22,6 +22,21 @@ class Plugin extends PluginBase
         ];
     }
 
+    /**
+     * Registers administrator permissions for this plugin.
+     *
+     * @return array
+     */
+    public function registerPermissions()
+    {
+        return [
+            'rainlab.mailchimp.configure' => [
+                'tab'   => 'MailChimp',
+                'label' => 'Configure MailChimp API access.',
+            ],
+        ];
+    }
+
     public function registerSettings()
     {
         return [
@@ -30,7 +45,8 @@ class Plugin extends PluginBase
                 'icon'        => 'icon-envelope',
                 'description' => 'Configure MailChimp API access.',
                 'class'       => 'RainLab\MailChimp\Models\Settings',
-                'order'       => 600
+                'order'       => 600,
+                'permissions' => ['rainlab.mailchimp.configure']
             ]
         ];
     }
