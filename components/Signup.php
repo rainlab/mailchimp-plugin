@@ -5,6 +5,7 @@ use ValidationException;
 use ApplicationException;
 use Cms\Classes\ComponentBase;
 use RainLab\MailChimp\Models\Settings;
+use DrewM\MailChimp\MailChimp;
 
 class Signup extends ComponentBase
 {
@@ -51,9 +52,8 @@ class Signup extends ComponentBase
         /*
          * Sign up to Mailchimp via the API
          */
-        require_once(plugins_path() . '/rainlab/mailchimp/vendor/MCAPI.class.php');
 
-        $api = new \MCAPI($settings->api_key);
+        $MailChimp = new MailChimp($settings->api_key);
 
         $this->page['error'] = null;
 
@@ -62,8 +62,14 @@ class Signup extends ComponentBase
             $mergeVars = $data['merge'];
         }
 
-        if ($api->listSubscribe($this->property('list'), post('email'), $mergeVars) !== true) {
-            $this->page['error'] = $api->errorMessage;
+        $result = $MailChimp->post("lists/".$this->property('list')."/members", [
+            'email_address' => post('email'),
+            'status'        => 'subscribed',
+            'merge_fields'  => $mergeVars,
+        ]);
+
+        if (!$MailChimp->success()) {
+            $this->page['error'] = $MailChimp->getLastError();
         }
     }
 }
