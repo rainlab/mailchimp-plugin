@@ -57,16 +57,16 @@ class Signup extends ComponentBase
 
         $this->page['error'] = null;
 
-        $mergeVars = '';
-        if (isset($data['merge']) && is_array($data['merge']) && count($data['merge'])) {
-            $mergeVars = $data['merge'];
-        }
-
-        $result = $MailChimp->post("lists/".$this->property('list')."/members", [
+        $subscriptionData = [
             'email_address' => post('email'),
             'status'        => 'subscribed',
-            'merge_fields'  => $mergeVars,
-        ]);
+        ];
+
+        if (isset($data['merge']) && is_array($data['merge']) && count($data['merge'])) {
+            $subscriptionData['merge_fields'] = $data['merge'];
+        }
+
+        $result = $MailChimp->post("lists/".$this->property('list')."/members", $subscriptionData);
 
         if (!$MailChimp->success()) {
             $this->page['error'] = $MailChimp->getLastError();
