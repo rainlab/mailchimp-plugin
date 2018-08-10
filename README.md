@@ -32,7 +32,7 @@ The example uses the standard partial mailSignup::result for displaying the subs
 
 More fields can be included in the subscription request:
     
-    <input type="text" name="merge[fname]" placeholder="First Name" />
-    <input type="text" name="merge[lname]" placeholder="Last Name" />
+    <input type="text" name="merge[FNAME]" placeholder="First Name" />
+    <input type="text" name="merge[LNAME]" placeholder="Last Name" />
 
 That's it!
