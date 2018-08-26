@@ -24,7 +24,12 @@ class Signup extends ComponentBase
                 'title'       => 'MailChimp List ID',
                 'description' => 'In MailChimp account, select List > Tools and look for a List ID.',
                 'type'        => 'string'
-            ]
+            ],
+            'confirm' => [
+                'title'       => 'Double Opt-in',
+                'description' => 'Enable confirmation to MailChimp list subscription.',
+                'type'        => 'checkbox'
+            ],
         ];
     }
 
@@ -59,7 +64,7 @@ class Signup extends ComponentBase
 
         $subscriptionData = [
             'email_address' => post('email'),
-            'status'        => 'subscribed',
+            'status'        => $this->property('confirm') ? 'pending' : 'subscribed',
         ];
 
         if (isset($data['merge']) && is_array($data['merge']) && count($data['merge'])) {
