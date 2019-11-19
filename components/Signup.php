@@ -71,7 +71,9 @@ class Signup extends ComponentBase
             $subscriptionData['merge_fields'] = $data['merge'];
         }
 
-        $result = $MailChimp->put("lists/".$this->property('list')."/members", $subscriptionData);
+		$subscriber_hash = $MailChimp->subscriberHash(post('email'));
+
+        $result = $MailChimp->put("lists/".$this->property('list')."/members/" . $subscriber_hash, $subscriptionData);
 
         if (!$MailChimp->success()) {
             $this->page['error'] = $MailChimp->getLastError();
