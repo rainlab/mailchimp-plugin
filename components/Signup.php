@@ -73,7 +73,7 @@ class Signup extends ComponentBase
 
         $subscriber_hash = $MailChimp->subscriberHash(post('email'));
 
-        $result = $MailChimp->put("lists/".$this->property('list')."/members/" . $subscriber_hash, $subscriptionData);
+        $result = $MailChimp->put("lists/".$this->property('list')."/members/".$subscriber_hash, $subscriptionData);
 
         if (!$MailChimp->success()) {
             $this->page['error'] = $MailChimp->getLastError();
