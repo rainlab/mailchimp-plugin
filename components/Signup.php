@@ -64,6 +64,7 @@ class Signup extends ComponentBase
 
         $subscriptionData = [
             'email_address' => post('email'),
+            'tags'          => post('tags', []),
             'status'        => $this->property('confirm') ? 'pending' : 'subscribed',
         ];
 
