@@ -1,4 +1,5 @@
-1.0.1: Initialize plugin
-1.0.2: Minor improvements to the code
-1.0.3: Improve compatibility with PHP7
-1.0.4: Switch to MailChimp API v3
+v1.0.1: Initialize plugin
+v1.0.2: Minor improvements to the code
+v1.0.3: Improve compatibility with PHP7
+v1.0.4: Switch to MailChimp API v3
+v1.0.5: Fixes sign up response data availability
